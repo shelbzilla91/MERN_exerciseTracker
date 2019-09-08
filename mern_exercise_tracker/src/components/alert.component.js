@@ -1,28 +1,29 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
 
-export default class CreateUser extends Component {
-  constructor(props) {
-    super(props);
+export default class Alert extends Component {
+  state = { show: false };
 
-    this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+  showModal = () => {
+    this.setState({ show: true });
+  };
 
-    this.state = {
-      username: ''
-    }
-  }
-
- 
+  hideModal = () => {
+    this.setState({ show: false });
+  };
 
   render() {
     return (
-        <div className="alert alert-success" role="alert">
-        <h4 className="alert-heading">Well done!</h4>
-        <p>You did it! You got out and moved! Keep up the good work</p>
-    
-        <p className="mb-0">BLAH</p>
-      </div>
-    )
+      <main>
+       
+        <button type="button" onClick={this.showModal}>
+          open
+        </button>
+      </main>
+    );
   }
 }
+
+const containerAlert = document.createElement("div");
+document.body.appendChild(containerAlert);
+ReactDOM.render(<Alert />, containerAlert);
